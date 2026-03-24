@@ -1,0 +1,47 @@
+{
+  "session_id": "20260316082447-d7d560cf",
+  "exported_at": "2026-03-16T08:24:47",
+  "exam_title": "Pentesting & OSINT - Fundamentos",
+  "results": [
+    {
+      "question_id": "98c051eb4f7bb611",
+      "category": "Metodología",
+      "difficulty": "easy",
+      "selected": "B",
+      "correct": "B",
+      "time_seconds": 2
+    },
+    {
+      "question_id": "aad071a74b44fa3f",
+      "category": "Herramientas",
+      "difficulty": "easy",
+      "selected": "",
+      "correct": "C",
+      "time_seconds": 2
+    },
+    {
+      "question_id": "5334711c870c9f98",
+      "category": "OSINT",
+      "difficulty": "medium",
+      "selected": "",
+      "correct": "B",
+      "time_seconds": 0
+    },
+    {
+      "question_id": "b96e0257a6017ecc",
+      "category": "Active Directory",
+      "difficulty": "hard",
+      "selected": "",
+      "correct": "A",
+      "time_seconds": 0
+    },
+    {
+      "question_id": "5349221b3b884658",
+      "category": "Web Security",
+      "difficulty": "medium",
+      "selected": "",
+      "correct": "B",
+      "time_seconds": 0
+    }
+  ]
+}
