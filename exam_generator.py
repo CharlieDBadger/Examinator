@@ -1794,26 +1794,22 @@ def _review_card(index: int, data: dict,
     btn_row = QHBoxLayout()
     btn_row.setSpacing(6)
 
-    def _mk_icon(txt, enabled=True, tip=''):
+    def _nav_btn(txt, enabled):
         b = QPushButton(txt)
-        b.setFixedSize(30, 30)
         b.setEnabled(enabled)
-        b.setToolTip(tip)
         b.setCursor(Qt.CursorShape.PointingHandCursor if enabled else Qt.CursorShape.ArrowCursor)
         b.setStyleSheet(
-            f"QPushButton {{ background: {C['surf2']}; color: {C['text2'] if enabled else C['text3']}; "
-            f"border: 1px solid {C['border']}; border-radius: 6px; font-size: 13px; }}"
-            f"QPushButton:hover {{ background: {C['border']}; color: {C['text']}; }}"
-            f"QPushButton:disabled {{ color: {C['text3']}; }}"
+            f"background: transparent; "
+            f"color: {C['text2'] if enabled else C['text3']}; "
+            f"border: 1px solid {C['border']}; "
+            "border-radius: 6px; padding: 5px 14px; font-size: 12px; font-weight: 500;"
         )
         return b
 
-    up_btn  = _mk_icon('↑', can_move_up,   'Mover arriba')
-    dn_btn  = _mk_icon('↓', can_move_down, 'Mover abajo')
-    dup_btn = _mk_icon('⧉', True,          'Duplicar')
+    up_btn = _nav_btn('Mover arriba', can_move_up)
+    dn_btn = _nav_btn('Mover abajo',  can_move_down)
     if on_move_up:   up_btn.clicked.connect(lambda: on_move_up(index))
     if on_move_down: dn_btn.clicked.connect(lambda: on_move_down(index))
-    if on_duplicate: dup_btn.clicked.connect(lambda: on_duplicate(index))
 
     edit_btn = QPushButton('Editar')
     edit_btn.setCursor(Qt.CursorShape.PointingHandCursor)
@@ -1833,10 +1829,19 @@ def _review_card(index: int, data: dict,
     )
     del_btn.clicked.connect(lambda: _ask_and_delete(del_btn, index, on_delete))
 
+    dup_btn = QPushButton('Duplicar')
+    dup_btn.setCursor(Qt.CursorShape.PointingHandCursor)
+    dup_btn.setStyleSheet(
+        f"background: transparent; color: {C['text2']}; "
+        f"border: 1px solid {C['border']}; "
+        "border-radius: 6px; padding: 5px 16px; font-size: 12px; font-weight: 500;"
+    )
+    if on_duplicate: dup_btn.clicked.connect(lambda: on_duplicate(index))
+
     btn_row.addWidget(up_btn)
     btn_row.addWidget(dn_btn)
-    btn_row.addWidget(dup_btn)
     btn_row.addStretch()
+    btn_row.addWidget(dup_btn)
     btn_row.addWidget(edit_btn)
     btn_row.addWidget(del_btn)
     layout.addLayout(btn_row)
